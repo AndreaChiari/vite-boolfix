@@ -1,5 +1,6 @@
 <script>
 import { apiUri } from '../data/index';
+import axios from 'axios'
 export default {
     name: 'HeaderApp',
     data() {
@@ -10,21 +11,28 @@ export default {
         }
     },
     methods: {
-        onTypeChange() {
-            console.log()
-            axios.get(`${apiUri}${this.termSearch}`)
+        getMovie() {
+            console.log('ciao')
+            axios.get(`${apiUri}&query=${this.termSearch}`)
                 .then((res) => {
-                    this.movie = res.data.results
+                    this.movie = res.data.results;
 
                 })
         }
+    },
+    changeSearch() {
+
+    },
+
+    created() {
+        this.getMovie()
     }
 }
 </script>
 <template>
     <header>
         <input type="text" v-model.trim="termSearch" placeholder="Cerca il tuo film...">
-        <button class="button">cerca</button>
+        <button class="button" @click="">cerca</button>
     </header>
 </template>
 
