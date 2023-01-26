@@ -1,0 +1,1 @@
+const apiUri = '{{base_URI}}/search/movie?api_key={{app_KEY}}&query=anelli' 
