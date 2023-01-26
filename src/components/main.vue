@@ -4,6 +4,7 @@ export default {
     props: {
         title: String,
         originalTitle: String,
+        originalName: String,
         language: String,
         vote: Number
 
@@ -21,6 +22,7 @@ export default {
 <template>
     <h1>{{ title }}</h1>
     <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
+    <h2 v-show="originalName">{{ originalName }}</h2>
     <div>
         <img v-if="language === 'it'" src="../img/it.png" alt="it">
         <img v-if="language === 'en'" src="../img/en.png" alt="en">

@@ -17,7 +17,7 @@ export default {
 
   methods: {
 
-    getFilterSearch(termSearch) {
+    SearchFilter(termSearch) {
       console.log(termSearch)
       axios.get(`${apiUri}&query=${termSearch}`)
         .then((res) => {
@@ -34,9 +34,10 @@ export default {
 
 </script>
 <template>
-  <HeaderApp @get-movie="getFilterSearch"></HeaderApp>
+  <HeaderApp @get-movie="SearchFilter"></HeaderApp>
   <MainApp v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
-    :language="movie.original_language" :vote="movie.vote_average" :key="movie.title">
+    :language="movie.original_language" :vote="movie.vote_average" :originalName="movie.original_name"
+    :key="movie.title">
   </MainApp>
 </template>
 <style>
