@@ -1,13 +1,20 @@
 <script>
 export default {
     name: 'MainApp',
+    props: {
+        title: String,
+        originalTitle: String,
+        language: String,
+        vote: Number
+
+    }
 }
 </script>
 <template>
-    <h1>titolo</h1>
-    <h2>titolo originale</h2>
-    <p>lingua</p>
-    <p>voto </p>
+    <h1>{{ title }}</h1>
+    <h2>{{ originalTitle }}</h2>
+    <p>{{ language }}</p>
+    <p>{{ vote }} </p>
 </template>
 <style>
 
