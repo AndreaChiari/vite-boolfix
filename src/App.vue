@@ -11,7 +11,7 @@ export default {
   components: { HeaderApp, MainApp, CardApp },
   data() {
     return {
-      movie: [],
+      movies: [],
     }
   },
 
@@ -21,8 +21,8 @@ export default {
       console.log(termSearch)
       axios.get(`${apiUri}&query=${termSearch}`)
         .then((res) => {
-          this.movie = res.data.results;
-          console.log(this.movie)
+          this.movies = res.data.results;
+          console.log(this.movies)
 
         })
     }
@@ -35,7 +35,9 @@ export default {
 </script>
 <template>
   <HeaderApp @get-movie="getFilterSearch"></HeaderApp>
-  <MainApp :title="this.movie.original_title"></MainApp>
+  <MainApp v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
+    :language="movie.original_language" :vote="movie.vote_average" :key="movie.title">
+  </MainApp>
 </template>
 <style>
 
