@@ -9,21 +9,20 @@ import CardApp from './components/card.vue'
 export default {
   name: 'coreApp',
   components: { HeaderApp, MainApp, CardApp },
+  data() {
+    return {
+      movie: [],
+    }
+  },
 
   methods: {
-    getMovie() {
-      console.log('ciao')
-      axios.get(`${apiUri}&query=${this.termSearch}`)
-        .then((res) => {
-          this.movie = res.data.results;
 
-        })
-    },
     getFilterSearch(termSearch) {
       console.log(termSearch)
       axios.get(`${apiUri}&query=${termSearch}`)
         .then((res) => {
           this.movie = res.data.results;
+          console.log(this.movie)
 
         })
     }
@@ -36,7 +35,7 @@ export default {
 </script>
 <template>
   <HeaderApp @get-movie="getFilterSearch"></HeaderApp>
-  <MainApp :title="movie.title"></MainApp>
+  <MainApp :title="this.movie.original_title"></MainApp>
 </template>
 <style>
 
