@@ -36,7 +36,7 @@ export default {
 </script>
 <template>
   <HeaderApp @get-movie="getFilterSearch"></HeaderApp>
-  <MainApp></MainApp>
+  <MainApp :title="movie.title"></MainApp>
 </template>
 <style>
 

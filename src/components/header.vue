@@ -1,9 +1,8 @@
 <script>
-import { apiUri } from '../data/index';
 export default {
     name: 'HeaderApp',
     data() {
-        { apiUri }
+
         return {
             termSearch: " ",
             emits: ['get-movie']
