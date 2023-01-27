@@ -5,10 +5,10 @@ export default {
     props: {
         title: String,
         originalTitle: String,
-        originalName: String,
         language: String,
         vote: Number,
-        poster: String
+        poster: String,
+        overview: String
     },
 
     data() {
@@ -28,7 +28,6 @@ export default {
         fixVote() {
             const roundNumber = Math.round(this.vote) / 2;
             const result = Math.round(roundNumber)
-            console.log(result)
             return result
         }
     },
@@ -38,68 +37,137 @@ export default {
 </script>
 <template>
 
-    <div class="d-flex flex-wrap">
-        <img :src="makePosterUrl" alt="">
+    <div class="d-flex flex-wrap poster-img-container">
+        <img :src="makePosterUrl" alt="" class="img-poster">
+        <div class="info-container">
+            <h1>Titolo: {{ title }}</h1>
+            <h2 v-show="title !== originalTitle">Titolo originale: {{ originalTitle }}</h2>
+            <div class="pic-language">
+                <img v-if="language === 'it'" src="../img/it.png" alt="it">
+                <img v-if="language === 'en'" src="../img/en.png" alt="en">
+            </div>
+            <div class="d-flex align-items-center" v-if="fixVote === 0">
+                <p>Voto:</p>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="d-flex" v-if="fixVote === 1">
+                <p>Voto:</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="d-flex" v-if="fixVote === 2">
+                <p>Voto:</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="d-flex" v-if="fixVote === 3">
+                <p>Voto:</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="d-flex" v-if="fixVote === 4">
+                <p>Voto:</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="d-flex" v-if="fixVote === 5">
+                <p>Voto:</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="overview">{{ overview }}</p>
+        </div>
     </div>
-    <!-- <p>ok</p> 
-        <h1>{{ title }}</h1>
-    <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
-    <h2 v-show="originalName">{{ originalName }}</h2>
-    <div>
-        <img v-if="language === 'it'" src="../img/it.png" alt="it">
-        <img v-if="language === 'en'" src="../img/en.png" alt="en">
-    </div>
-    <p>{{ fixVote }}</p>
-    <div class="d-flex" v-if="fixVote === 0">
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
-    <div class="d-flex" v-if="fixVote === 1">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
-    <div class="d-flex" v-if="fixVote === 2">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
-    <div class="d-flex" v-if="fixVote === 3">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
-    <div class="d-flex" v-if="fixVote === 4">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
-    <div class="d-flex" v-if="fixVote === 5">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-    </div>-->
+
+
 
 </template>
-<style>
-img {
+<style lang="scss" scoped>
+.fa-solid,
+.fa-regular {
+    font-size: 30px;
+    color: yellow;
+}
+
+p {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+h1,
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.overview {
+    font-size: 20px;
+    line-height: 21px;
+}
+
+.poster-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.info-container {
+    width: 344px;
+    height: 515px;
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-left: 10px;
+    overflow-y: auto;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 5;
+    z-index: 1;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+
+    .pic-language {
+        img {
+            width: 100px;
+            height: auto;
+            margin-left: 0px;
+            margin-bottom: 10px;
+        }
+    }
+
+}
+
+.img-poster {
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 20px;
     margin-bottom: 20px;
+
+}
+
+.poster-img-container:hover .info-container {
+    display: inline;
 }
 </style>
 

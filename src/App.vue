@@ -55,15 +55,17 @@ export default {
     <main>
       <h1 v-show="!originalTitle">Film</h1>
       <div class="d-flex flex-wrap">
-        <MovieCard v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
-          :language="movie.original_language" :vote="movie.vote_average" :originalName="movie.original_name"
-          :poster="movie.poster_path" :key="movie.title"></MovieCard>
+        <MovieCard v-for="movie in movies" :title="movie.title" :originalTitle="movie.original_title"
+          :language="movie.original_language" :vote="movie.vote_average" :poster="movie.poster_path" :key="movie.title"
+          :overview="movie.overview">
+        </MovieCard>
       </div>
       <h1 v-show="!originalTitle">Serie TV</h1>
       <div class="d-flex flex-wrap">
-        <SerieCard v-for="serie in series" :originalTitle="serie.original_title" :title="serie.title"
-          :language="serie.original_language" :vote="serie.vote_average" :originalName="serie.original_name"
-          :poster="serie.poster_path" :key="serie.title"></SerieCard>
+        <SerieCard v-for="serie in series" :title="serie.name" :originalTitle="serie.original_name"
+          :language="serie.original_language" :vote="serie.vote_average" :poster="serie.poster_path"
+          :overview="serie.overview" :key="serie.title">
+        </SerieCard>
       </div>
     </main>
   </div>
