@@ -41,6 +41,9 @@ export default {
     </div>
     <p>{{ vote }}</p>
     <div>
+        <i class="fa-solid fa-star"></i>
+    </div>
+    <div>
         <img :src="makePosterUrl" alt="originalTitle">
     </div>
 

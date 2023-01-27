@@ -19,29 +19,24 @@ export default {
         }
 
     },
-    method: {
 
-    },
     computed: {
         makePosterUrl() {
             const url = new URL(baseImgUrl + this.poster, import.meta.url);
             return url.href;
+        },
+        fixVote() {
+            const roundNumber = Math.round(this.vote) / 2;
+            console.log(roundNumber)
+            return roundNumber
         }
     },
 
-
-
 }
-
-
-const roundNumber = Math.round(3.9) / 2;
-console.log(roundNumber)
-
-
 
 </script>
 <template>
-
+    <p>ok</p>
     <h1>{{ title }}</h1>
     <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
     <h2 v-show="originalName">{{ originalName }}</h2>
@@ -49,10 +44,10 @@ console.log(roundNumber)
         <img v-if="language === 'it'" src="../img/it.png" alt="it">
         <img v-if="language === 'en'" src="../img/en.png" alt="en">
     </div>
+
+    <p>{{ vote }}</p>
     <div>
-        <p>{{ vote }}</p>
-
-
+        <i class="fa-solid fa-star"></i>
     </div>
     <div>
         <img :src="makePosterUrl" alt="originalTitle">
@@ -62,3 +57,11 @@ console.log(roundNumber)
 <style>
 
 </style>
+
+
+
+
+
+
+
+
