@@ -19,15 +19,26 @@ export default {
         }
 
     },
+    method: {
+
+    },
     computed: {
         makePosterUrl() {
             const url = new URL(baseImgUrl + this.poster, import.meta.url);
             return url.href;
         }
-    }
+    },
+
 
 
 }
+
+
+const roundNumber = Math.round(3.9) / 2;
+console.log(roundNumber)
+
+
+
 </script>
 <template>
 
@@ -38,7 +49,10 @@ export default {
         <img v-if="language === 'it'" src="../img/it.png" alt="it">
         <img v-if="language === 'en'" src="../img/en.png" alt="en">
     </div>
-    <p>{{ vote }}</p>
+    <div>
+        <p>{{ vote }}</p>
+
+    </div>
     <div>
         <img :src="makePosterUrl" alt="originalTitle">
     </div>
