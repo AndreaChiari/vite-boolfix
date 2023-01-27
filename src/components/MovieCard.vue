@@ -1,7 +1,7 @@
 <script>
-import { baseImgUrl } from '../data/index';
+import { baseImgUrl } from '../data';
 export default {
-    name: 'CinemaCard',
+    name: 'MovieCard',
     props: {
         title: String,
         originalTitle: String,
@@ -15,17 +15,24 @@ export default {
         return {
             en: 'en.png',
             it: 'it.png',
-            imgPoster: baseImgUrl
+
         }
 
     },
+    computed: {
+        makePosterUrl() {
+            const url = new URL(baseImgUrl + this.poster, import.meta.url);
+            // const url = new URL(baseImgUrl + this.poster, import.meta.url);
+            return url.href;
+        }
+    }
 
 
 }
 </script>
 <template>
 
-    <h1>{{ title }}</h1>
+    <!-- <h1>{{ title }}</h1>
     <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
     <h2 v-show="originalName">{{ originalName }}</h2>
     <div>
@@ -34,8 +41,8 @@ export default {
     </div>
     <p>{{ vote }}</p>
     <div>
-        <img :src="imgPoster + poster" alt="originalTitle">
-    </div>
+        <img :src="makePosterUrl" alt="originalTitle">
+    </div> -->
 
 </template>
 <style>
