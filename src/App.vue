@@ -1,14 +1,17 @@
 <script>
 import { apiUri } from './data/index';
+
+// import axios
 import axios from 'axios'
+
+// import components
 import HeaderApp from './components/header.vue'
-import MainApp from './components/main.vue'
-import CardApp from './components/card.vue'
+import CinemaCard from './components/CinemaCard.vue'
 
 
 export default {
   name: 'coreApp',
-  components: { HeaderApp, MainApp, CardApp },
+  components: { HeaderApp, CinemaCard },
   data() {
     return {
       movies: [],
@@ -16,6 +19,8 @@ export default {
   },
 
   methods: {
+
+    // imposto un filtro che mi permette di filtrare dall'API serie tv e film
 
     SearchFilter(termSearch) {
       console.log(termSearch)
@@ -35,10 +40,10 @@ export default {
 </script>
 <template>
   <HeaderApp @get-movie="SearchFilter"></HeaderApp>
-  <MainApp v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
+  <CinemaCard v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
     :language="movie.original_language" :vote="movie.vote_average" :originalName="movie.original_name"
-    :key="movie.title">
-  </MainApp>
+    :poster="movie.poster_path" :key="movie.title"></CinemaCard>
+
 </template>
 <style>
 
