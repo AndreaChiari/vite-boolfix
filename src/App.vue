@@ -23,41 +23,34 @@ export default {
 
   methods: {
 
-    // imposto un filtro che mi permette di filtrare dall'API i film
+    // imposto un filtro che mi permette di filtrare dall'API i film e le serie TV
 
-    movieFilter(termSearch) {
-      console.log(termSearch)
+
+
+    cinemaFilter(termSearch) {
+
       axios.get(`${apiUri}/search/movie?api_key=${myKey}&query=${termSearch}`)
         .then((res) => {
           this.movies = res.data.results;
           console.log(this.movies)
 
+          axios.get(`${apiUri}/search/tv?api_key=${myKey}&query=${termSearch}`)
+            .then((res) => {
+              this.series = res.data.results;
+              console.log(this.series)
+
+            })
+
         })
     },
-
-
-    // imposto un filtro che mi permette di filtrare dall'API le serie tv
-
-    serieFilter(termSearch) {
-      console.log(termSearch)
-      axios.get(`${apiUri}/search/tv?api_key=${myKey}&query=${termSearch}`)
-        .then((res) => {
-          this.series = res.data.results;
-          console.log(this.series)
-
-        })
-    }
   },
 }
 
 
 
-
-
-
 </script>
 <template>
-  <HeaderApp @get-movie="movieFilter"></HeaderApp>
+  <HeaderApp @get-movie="cinemaFilter"></HeaderApp>
   <main>
 
     <MovieCard v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
@@ -75,3 +68,5 @@ export default {
 <style>
 
 </style>
+
+
