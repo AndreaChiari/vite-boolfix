@@ -34,7 +34,7 @@ export default {
     </div>
     <p>{{ vote }}</p>
     <div>
-        <img :src="imgPoster + poster" alt="originalTitle" v-if="poster !== ''">
+        <img :src="imgPoster + poster" alt="originalTitle">
     </div>
 
 </template>

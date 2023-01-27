@@ -40,9 +40,11 @@ export default {
 </script>
 <template>
   <HeaderApp @get-movie="SearchFilter"></HeaderApp>
-  <CinemaCard v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
-    :language="movie.original_language" :vote="movie.vote_average" :originalName="movie.original_name"
-    :poster="movie.poster_path" :key="movie.title"></CinemaCard>
+  <main>
+    <CinemaCard v-for="movie in movies" :originalTitle="movie.original_title" :title="movie.title"
+      :language="movie.original_language" :vote="movie.vote_average" :originalName="movie.original_name"
+      :poster="movie.poster_path" :key="movie.title"></CinemaCard>
+  </main>
 
 </template>
 <style>
