@@ -52,6 +52,7 @@ console.log(roundNumber)
     <div>
         <p>{{ vote }}</p>
 
+
     </div>
     <div>
         <img :src="makePosterUrl" alt="originalTitle">
