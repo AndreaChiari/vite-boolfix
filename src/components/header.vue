@@ -28,6 +28,10 @@ export default {
 @use '../assets/style.scss' as *;
 
 .standard-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     background-color: black
 }
 

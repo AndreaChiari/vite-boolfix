@@ -37,8 +37,12 @@ export default {
 
 </script>
 <template>
+
+    <div class="d-flex flex-wrap">
+        <img :src="makePosterUrl" alt="">
+    </div>
     <!-- <p>ok</p> 
-    <h1>{{ title }}</h1>
+        <h1>{{ title }}</h1>
     <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
     <h2 v-show="originalName">{{ originalName }}</h2>
     <div>
@@ -88,13 +92,15 @@ export default {
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
     </div>-->
-    <div>
-        <img :src="makePosterUrl" alt="originalTitle">
-    </div>
 
 </template>
 <style>
-
+img {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
 </style>
 
 

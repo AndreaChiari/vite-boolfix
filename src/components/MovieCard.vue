@@ -38,21 +38,24 @@ export default {
 </script>
 <template>
 
-    <h1>{{ title }}</h1>
-    <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
-    <h2 v-show="originalName">{{ originalName }}</h2>
-    <div>
-        <img v-if="language === 'it'" src="../img/it.png" alt="it">
-        <img v-if="language === 'en'" src="../img/en.png" alt="en">
+    <div class="d-flex flex-wrap img-container">
+        <img :src="makePosterUrl" alt="">
     </div>
-    <p>{{ fixVote }}</p>
-    <div class="d-flex" v-if="fixVote === 0">
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
+    <!-- <h1>{{ title }}</h1> 
+        <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
+        <h2 v-show="originalName">{{ originalName }}</h2>
+        <div>
+            <img v-if="language === 'it'" src="../img/it.png" alt="it">
+            <img v-if="language === 'en'" src="../img/en.png" alt="en">
+        </div>
+        <p>{{ fixVote }}</p>
+        <div class="d-flex" v-if="fixVote === 0">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
     <div class="d-flex" v-if="fixVote === 1">
         <i class="fa-solid fa-star"></i>
         <i class="fa-regular fa-star"></i>
@@ -87,12 +90,14 @@ export default {
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
-    </div>
-    <div>
-        <img :src="makePosterUrl" alt="originalTitle">
-    </div>
+    </div>-->
 
 </template>
-<style>
-
+<style lang="scss">
+img {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
 </style>
