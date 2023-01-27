@@ -65,8 +65,14 @@ export default {
 
 
 </template>
-<style>
 
+
+<style scoped lang="scss">
+@use './assets/style.scss' as *;
+
+main {
+  @include standard-container
+}
 </style>
 
 

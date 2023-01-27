@@ -2,7 +2,6 @@
 export default {
     name: 'HeaderApp',
     data() {
-
         return {
             termSearch: " ",
             emits: ['get-movie']
@@ -10,18 +9,40 @@ export default {
         }
     },
 
+
 }
 </script>
 <template>
-    <header>
-        <input type="text" v-model.trim="termSearch" placeholder="Cerca il tuo film...">
-        <button class="button" @click="$emit('get-movie', termSearch)">cerca</button>
-    </header>
+    <div class="standard-container">
+        <header class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="text-danger">BOOLFLIX</h1>
+            <div>
+                <input type="text" v-model.trim="termSearch" placeholder="Cerca il tuo film...">
+                <button class="button" @click="$emit('get-movie', termSearch)">cerca</button>
+            </div>
+        </header>
+    </div>
 </template>
 
 <style scoped lang="scss">
+@use '../assets/style.scss' as *;
+
+.standard-container {
+    background-color: black
+}
+
 header {
+    @include standard-container;
     height: 100px;
-    background-color: rgb(196, 21, 21);
+}
+
+input {
+    padding: 5px 10px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
 }
 </style>

@@ -27,8 +27,9 @@ export default {
         },
         fixVote() {
             const roundNumber = Math.round(this.vote) / 2;
-            console.log(roundNumber)
-            return roundNumber
+            const result = Math.round(roundNumber)
+            console.log(result)
+            return result
         }
     },
 
@@ -36,7 +37,7 @@ export default {
 
 </script>
 <template>
-    <p>ok</p>
+    <!-- <p>ok</p> 
     <h1>{{ title }}</h1>
     <h2 v-show="originalTitle !== title">{{ originalTitle }}</h2>
     <h2 v-show="originalName">{{ originalName }}</h2>
@@ -44,11 +45,49 @@ export default {
         <img v-if="language === 'it'" src="../img/it.png" alt="it">
         <img v-if="language === 'en'" src="../img/en.png" alt="en">
     </div>
-
-    <p>{{ vote }}</p>
-    <div>
-        <i class="fa-solid fa-star"></i>
+    <p>{{ fixVote }}</p>
+    <div class="d-flex" v-if="fixVote === 0">
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
     </div>
+    <div class="d-flex" v-if="fixVote === 1">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+    </div>
+    <div class="d-flex" v-if="fixVote === 2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+    </div>
+    <div class="d-flex" v-if="fixVote === 3">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+    </div>
+    <div class="d-flex" v-if="fixVote === 4">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+    </div>
+    <div class="d-flex" v-if="fixVote === 5">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+    </div>-->
     <div>
         <img :src="makePosterUrl" alt="originalTitle">
     </div>
@@ -57,6 +96,7 @@ export default {
 <style>
 
 </style>
+
 
 
 
