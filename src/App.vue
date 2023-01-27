@@ -8,12 +8,10 @@ import axios from 'axios'
 // import components
 import HeaderApp from './components/Header.vue'
 import MovieCard from './components/MovieCard.vue'
-import SerieCard from './components/SerieCard.vue'
-
 
 export default {
   name: 'coreApp',
-  components: { HeaderApp, MovieCard, SerieCard },
+  components: { HeaderApp, MovieCard },
   data() {
     return {
       movies: [],
@@ -62,10 +60,10 @@ export default {
       </div>
       <h1 v-show="!originalTitle">Serie TV</h1>
       <div class="d-flex flex-wrap">
-        <SerieCard v-for="serie in series" :title="serie.name" :originalTitle="serie.original_name"
+        <MovieCard v-for="serie in series" :title="serie.name" :originalTitle="serie.original_name"
           :language="serie.original_language" :vote="serie.vote_average" :poster="serie.poster_path"
           :overview="serie.overview" :key="serie.title">
-        </SerieCard>
+        </MovieCard>
       </div>
     </main>
   </div>
