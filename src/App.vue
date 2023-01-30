@@ -15,15 +15,15 @@ export default {
   data() {
     return {
       movies: [],
-      series: []
+      series: [],
     }
   },
 
   methods: {
 
+
+
     // imposto un filtro che mi permette di filtrare dall'API i film e le serie TV
-
-
 
     cinemaFilter(termSearch) {
 
@@ -51,6 +51,9 @@ export default {
   <HeaderApp @get-movie="cinemaFilter"></HeaderApp>
   <div>
     <main>
+
+      <!-- CARD PER FILM  -->
+
       <h1 v-show="!originalTitle">Film</h1>
       <div class="d-flex flex-wrap">
         <MovieCard v-for="movie in movies" :title="movie.title" :originalTitle="movie.original_title"
@@ -58,6 +61,9 @@ export default {
           :overview="movie.overview">
         </MovieCard>
       </div>
+
+      <!-- CARD PER SERIE TV  -->
+
       <h1 v-show="!originalTitle">Serie TV</h1>
       <div class="d-flex flex-wrap">
         <MovieCard v-for="serie in series" :title="serie.name" :originalTitle="serie.original_name"

@@ -4,7 +4,8 @@ export default {
     data() {
         return {
             termSearch: " ",
-            emits: ['get-movie']
+            emits: ['get-movie'],
+            isAddClass: true
 
         }
     },
@@ -12,6 +13,9 @@ export default {
 
 }
 </script>
+
+<!-- Input + button -->
+
 <template>
     <div class="standard-container">
         <header class="container-fluid d-flex justify-content-between align-items-center">

@@ -1,5 +1,6 @@
 <script>
 import { baseImgUrl } from '../data';
+import { placeholder } from '../data';
 export default {
     name: 'MovieCard',
     props: {
@@ -11,6 +12,8 @@ export default {
         overview: String
     },
 
+    // Variabili per mostrare le bandiere degli stati
+
     data() {
         return {
             en: 'en.png',
@@ -19,11 +22,23 @@ export default {
         }
 
     },
+
+
     computed: {
+
+        // funzione che va a comporre il link dinamico per le immagini delle bandiere
+
         makePosterUrl() {
             const url = new URL(baseImgUrl + this.poster, import.meta.url);
             return url.href;
         },
+
+
+
+
+
+        // funzione che va ad arrotondare il numero e lo divide 
+
         fixVote() {
             const roundNumber = Math.round(this.vote) / 2;
             const result = Math.round(roundNumber)
@@ -38,7 +53,13 @@ export default {
 <template>
 
     <div class="d-flex flex-wrap poster-img-container">
-        <img :src="makePosterUrl" alt="" class="img-poster">
+
+        <!-- Immagine locandina -->
+
+        <img :src="makePosterUrl" :alt="title" class="img-poster">
+
+        <!-- Card contenente le informazioni relative  al film o serie-->
+
         <div class="info-container">
             <h1>Titolo: {{ title }}</h1>
             <h2 v-show="title !== originalTitle">Titolo originale: {{ originalTitle }}</h2>
@@ -46,53 +67,11 @@ export default {
                 <img v-if="language === 'it'" src="../img/it.png" alt="it">
                 <img v-if="language === 'en'" src="../img/en.png" alt="en">
             </div>
-            <div class="d-flex align-items-center" v-if="fixVote === 0">
-                <p>Voto:</p>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="d-flex" v-if="fixVote === 1">
-                <p>Voto:</p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="d-flex" v-if="fixVote === 2">
-                <p>Voto:</p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="d-flex" v-if="fixVote === 3">
-                <p>Voto:</p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="d-flex" v-if="fixVote === 4">
-                <p>Voto:</p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="d-flex" v-if="fixVote === 5">
-                <p>Voto:</p>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+
+            <!--Rating Star logic -->
+
+            <div>
+                <i v-for="n in 5" :class="n <= fixVote ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
             </div>
             <p class="overview">{{ overview }}</p>
         </div>
