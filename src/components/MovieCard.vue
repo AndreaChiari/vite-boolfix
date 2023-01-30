@@ -1,6 +1,5 @@
 <script>
 import { baseImgUrl } from '../data';
-import { placeholder } from '../data';
 export default {
     name: 'MovieCard',
     props: {

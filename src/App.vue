@@ -6,7 +6,7 @@ import { myKey } from './data/index'
 import axios from 'axios'
 
 // import components
-import HeaderApp from './components/Header.vue'
+import HeaderApp from './components/HeaderApp.vue'
 import MovieCard from './components/MovieCard.vue'
 
 export default {
