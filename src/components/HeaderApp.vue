@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             termSearch: " ",
-            emits: ['get-movie'],
+            emits: ['get-movie', 'getting-movie'],
             isAddClass: true
 
         }
@@ -21,8 +21,9 @@ export default {
         <header class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="text-danger">BOOLFLIX</h1>
             <div>
-                <input type="text" v-model.trim="termSearch" placeholder="Cerca il tuo film...">
-                <button class="button" @click="$emit('get-movie', termSearch)">cerca</button>
+                <input type="text" @keyup.enter="$emit('get-movie', termSearch)" v-model.trim="termSearch"
+                    placeholder="Cerca il tuo film...">
+                <button class="button" @click="$emit('getting-movie', termSearch)">cerca</button>
             </div>
         </header>
     </div>

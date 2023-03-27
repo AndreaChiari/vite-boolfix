@@ -48,7 +48,7 @@ export default {
 
 </script>
 <template>
-  <HeaderApp @get-movie="cinemaFilter"></HeaderApp>
+  <HeaderApp @get-movie="cinemaFilter" @getting-movie="cinemaFilter"></HeaderApp>
   <div>
     <main>
 
@@ -73,9 +73,6 @@ export default {
       </div>
     </main>
   </div>
-
-
-
 </template>
 
 

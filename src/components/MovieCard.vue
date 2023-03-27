@@ -32,10 +32,6 @@ export default {
             return url.href;
         },
 
-
-
-
-
         // funzione che va ad arrotondare il numero e lo divide 
 
         fixVote() {
@@ -45,12 +41,9 @@ export default {
         }
     }
 
-
-
 }
 </script>
 <template>
-
     <div class="d-flex flex-wrap poster-img-container">
 
         <!-- Immagine locandina -->
@@ -75,8 +68,6 @@ export default {
             <p class="overview">{{ overview }}</p>
         </div>
     </div>
-
-
 </template>
 <style lang="scss" scoped>
 .fa-solid,
